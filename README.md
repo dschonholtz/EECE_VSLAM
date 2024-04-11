@@ -17,3 +17,22 @@ However, we made our own version of it to make sure we could set up our own vers
 -->
 
 `./scripts/InstallStella.sh`
+
+
+
+# In theory the below should just work...
+
+## This isn't tested yet, but it will need to be done after sourcing the foxy distro, doing colcon build on the drone_stella_slam package, and then running the commands from the drone_stella_slam folder.
+
+Open up 3 terminals
+Terminal 1: ros2 launch realsense2_camera rs_launch.py
+Terminal 2: ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw
+Terminal 2 (depth realsense): ros2 run image_transport republish raw in:=camera/depth/image_rect_raw out:=/camera/depth/image_raw
+Mapping:
+
+Terminal 3: ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/equirectangular.yaml --map-db-out map.msg
+Terminal 3 (realsense): ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
+Localization:
+
+Terminal 3: ros2 run stella_vslam_ros run_slam --disable-mapping -v orb_vocab.fbow -c camera_config/equirectangular.yaml --map-db-in map.msg
+Terminal 3 (realsense): ros2 run stella_vslam_ros run_slam --disable-mapping -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-in map.msg
