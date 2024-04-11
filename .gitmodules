@@ -1,0 +1,6 @@
+[submodule "src/stella_vslam_ros"]
+	path = src/stella_vslam_ros
+	url = git@github.com:stella-cv/stella_vslam_ros.git
+[submodule "src/vision_opencv"]
+	path = src/vision_opencv
+	url = git@github.com:ros-perception/vision_opencv.git

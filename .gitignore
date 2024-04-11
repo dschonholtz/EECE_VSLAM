@@ -1,0 +1,53 @@
+# Build folders
+build/
+install/
+log/
+build_isolated/
+install_isolated/
+devel/
+devel_isolated/
+
+# Python virtual environments
+venv/
+colcon_venv/
+
+# Python compiled files
+__pycache__/
+*.pycf
+*.pyo
+*.pyd
+
+# CMake and Make generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.make
+*.cmake
+
+# Package-specific temporary files
+*.tmp
+*~
+
+# Hidden system files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE specific files
+.vscode/
+.idea/
+*.swp
+*.bak
+*.sublime-workspace
+
+# ROS logs
+*.log
+
+# Node modules
+node_modules/
+
+# Others
+*~
+*.lock
+
+# Ignore the build dir as that will have a massive amount of stuff in it
+stella_build
