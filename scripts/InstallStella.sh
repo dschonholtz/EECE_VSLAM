@@ -170,3 +170,5 @@ sudo make install
 ## ROS2 build
 cd $BUILD_FOLDER
 colcon build --symlink-install --cmake-args -DUSE_PANGOLIN_VIEWER=ON -DUSE_SOCKET_PUBLISHER=OFF
+echo "Finishing. Build folder was:"
+echo $BUILD_FOLDER

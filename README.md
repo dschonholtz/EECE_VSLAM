@@ -24,6 +24,9 @@ However, we made our own version of it to make sure we could set up our own vers
 
 ## This isn't tested yet, but it will need to be done after sourcing the foxy distro, doing colcon build on the drone_stella_slam package, and then running the commands from the drone_stella_slam folder.
 
+Make sure you recursively clone the submodules for stella vslam ros:
+submodule update --init --recursive
+
 Open up 3 terminals
 Terminal 1: ros2 launch realsense2_camera rs_launch.py
 Terminal 2: ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw

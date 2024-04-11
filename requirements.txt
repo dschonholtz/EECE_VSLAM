@@ -1,1 +1,3 @@
 colcon-common-extensions
+# numpy
+pytestdeactivate
