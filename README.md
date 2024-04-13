@@ -27,6 +27,26 @@ However, we made our own version of it to make sure we could set up our own vers
 Make sure you recursively clone the submodules for stella vslam ros:
 submodule update --init --recursive
 
+Each top level bullet is a terminal
+1. source noetic
+   1. Run roscore
+2. ~/foxy_ws$ rosparam load scripts/bridge.yaml 
+   1. douglas@douglasvm:~/foxy_ws$ roslaunch realsense2_camera rs_camera.launch
+3. Source noetic THEN source foxy
+   1. rosparam load scripts/bridge.yaml
+   2. ros2 run ros1_bridge parameter_bridge
+      1. jk that doesn't seem to work just send it all: ros2 run ros1_bridge --bridge-all-1to2-topics
+4. source foxy
+   1. ros2 run image_transport republish raw in:=camera/depth/image_rect_raw out:=/camera/depth/image_raw
+5. source foxy_ws (this assumes you've built it already)
+   1. cd src
+   2. ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
+
+
+
+
+
+## OLD STUFF
 Open up 3 terminals
 Terminal 1: ros2 launch realsense2_camera rs_launch.py
 Terminal 2: ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw

@@ -1,0 +1,9 @@
+topics:
+  -
+    topic: /camera/color/image/raw  # Topic name for camera depth on both ROS 1 and ROS 2
+    type: sensor_msgs/msg/Image  # Type of topic to bridge for depth images
+    queue_size: 1  # Queue size
+  -
+    topic: /camera/depth/image_rect_raw  # Topic name for color images on both ROS 1 and ROS 2
+    type: sensor_msgs/msg/Image  # Type of topic to bridge for color images
+    queue_size: 1  # Queue size
