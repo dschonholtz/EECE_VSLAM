@@ -22,7 +22,7 @@ However, we made our own version of it to make sure we could set up our own vers
 
 # In theory the below should just work...
 
-## This isn't tested yet, but it will need to be done after sourcing the foxy distro, doing colcon build on the drone_stella_slam package, and then running the commands from the drone_stella_slam folder.
+## This seems to work, but you need to use the parameter bridge described in the drive and use the scripts/bridge.yaml file instead of all 1to2 topics for it not to be laggy.
 
 Make sure you recursively clone the submodules for stella vslam ros:
 submodule update --init --recursive
