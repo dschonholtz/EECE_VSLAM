@@ -27,19 +27,19 @@ However, we made our own version of it to make sure we could set up our own vers
 Make sure you recursively clone the submodules for stella vslam ros:
 submodule update --init --recursive
 
-To visualize the image data you need to change the type from map to 
+To visualize the image data you need to change the type from map to the frame one under it
 
 
 Each top level bullet is a terminal
 1. source noetic
-2. douglas@douglasvm:~/foxy_ws$ roslaunch realsense2_camera rs_camera.launch
-3. Source noetic THEN source foxy in the workspace?
+   1. douglas@douglasvm:~/foxy_ws$ roslaunch realsense2_camera rs_camera.launch
+2. Source noetic THEN source foxy in the workspace?
    1. ros2 run ros1_bridge  dynamic_bridge --bridge-all-1to2-topics
-4. source foxy in the workspace?
+3. source foxy in the workspace?
    1. ros2 run image_transport republish raw in:=camera/depth/image_rect_raw out:=/camera/depth/image_raw
-      1. There is another image transport? But it is in theory only for non real sense?
+      1. There is another image transport? But it is in theory only for non real sense? It appears to get added to the rqt_graph to /run_slam when we do the republish so we should run it
          1. ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw
-5. source foxy_ws (this assumes you've built it already)
+4. source foxy_ws (this assumes you've built it already)
    1. cd src/drone_stella_slam
    2. ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
 
