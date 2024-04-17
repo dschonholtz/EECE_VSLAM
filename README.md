@@ -25,21 +25,23 @@ However, we made our own version of it to make sure we could set up our own vers
 ## This seems to work, but you need to use the parameter bridge described in the drive and use the scripts/bridge.yaml file instead of all 1to2 topics for it not to be laggy.
 
 Make sure you recursively clone the submodules for stella vslam ros:
-submodule update --init --recursive
+git submodule update --init --recursive
 
 To visualize the image data you need to change the type from map to the frame one under it
 
 
 Each top level bullet is a terminal
-1. source noetic
+1. cd scripts
+   1. ./setup.sh
+      1. This will install all dependencies
+2. source noetic
    1. douglas@douglasvm:~/foxy_ws$ roslaunch realsense2_camera rs_camera.launch
-2. Source noetic THEN source foxy in the workspace?
-   1. ros2 run ros1_bridge  dynamic_bridge --bridge-all-1to2-topics
-3. source foxy in the workspace?
+3. Source noetic THEN source foxy
+   1. rosparam load bridge.yaml
+   2. ros2 run ros1_bridge parameter_bridge
+4. source foxy
    1. ros2 run image_transport republish raw in:=camera/depth/image_rect_raw out:=/camera/depth/image_raw
-      1. There is another image transport? But it is in theory only for non real sense? It appears to get added to the rqt_graph to /run_slam when we do the republish so we should run it
-         1. ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw
-4. source foxy_ws (this assumes you've built it already)
+5. source foxy
    1. cd src/drone_stella_slam
    2. ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
 

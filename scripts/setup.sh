@@ -158,9 +158,10 @@ cd stella_vslam
 git submodule update -i --recursive
 mkdir -p build && cd build
 cmake \
-    -DUSE_PANGOLIN_VIEWER=OFF \
-    -DINSTALL_PANGOLIN_VIEWER=OFF \
-    -DUSE_SOCKET_PUBLISHER=ON \
+    -DUSE_PANGOLIN_VIEWER=ON \
+    -DINSTALL_PANGOLIN_VIEWER=ON \
+    -DUSE_SOCKET_PUBLISHER=OFF \
+    -DINSTALL_SOCKET_PUBLISHER=OFF \
     -DBUILD_TESTS=ON \
     -DBUILD_EXAMPLES=ON \
     ..
@@ -169,6 +170,4 @@ sudo make install
 
 ## ROS2 build
 cd $BUILD_FOLDER
-colcon build --symlink-install --cmake-args -DUSE_PANGOLIN_VIEWER=OFF -DUSE_SOCKET_PUBLISHER=ON
-echo "Finishing. Build folder was:"
-echo $BUILD_FOLDER
+colcon build --symlink-install --cmake-args -DUSE_PANGOLIN_VIEWER=ON -DUSE_SOCKET_PUBLISHER=OFF
