@@ -41,7 +41,8 @@ Each top level bullet is a terminal
          1. ros2 run image_transport republish raw in:=camera/color/image_raw out:=/camera/image_raw
 4. source foxy_ws (this assumes you've built it already)
    1. cd src/drone_stella_slam
-   2. ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
+   2. export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/foxy_vm/MOTION-STELLA-VSLAM/stella_build/stella_vslam/build/lib/
+   3. ros2 run stella_vslam_ros run_slam -v orb_vocab.fbow -c camera_config/realsense_rgbd.yaml --map-db-out map.msg
 
 
 
